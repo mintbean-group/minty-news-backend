@@ -261,7 +261,7 @@ module.exports = function(mongoDBConnectionString){
             return new Promise(function(resolve,reject){
 
                 Team.find()
-                //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
+                 .sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
                 .populate("Projects") // populate the "Projects" field
                 .populate("Employees") // populate the "Employees" field
                 .populate("TeamLead") // populate the "TeamLead" field

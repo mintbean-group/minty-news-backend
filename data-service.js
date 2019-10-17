@@ -12,7 +12,7 @@ module.exports = function(mongoDBConnectionString){
     return {
         connect: function(){
             return new Promise(function(resolve, reject){
-                let db = mongoose.createConnection(mongoDBConnectionString, { useNewUrlParser: true }, {useUnifiedTopology: true});
+                let db = mongoose.createConnection(mongoDBConnectionString, { useNewUrlParser: true });
                 
                 db.on('error', (err)=>{
                     reject(err);

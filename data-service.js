@@ -25,12 +25,14 @@ module.exports = function(mongoDBConnectionString){
             });
         },
         getAllSubscribers: function(){
+            console.log("getAllSubscribers has been hit");
             return new Promise(function(resolve,reject){
 
                 Subscriber.find()
                 //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
                 .exec()
                 .then((subscribers) => {
+                    console.log(subscribers);
                     resolve(subscribers);
                 })
                 .catch((err)=>{

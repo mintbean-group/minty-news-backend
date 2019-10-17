@@ -26,7 +26,8 @@ app.use(cors());
 
 app.get("/subscribers", (req,res) => {
     data.getAllSubscribers().then((data)=>{
-        res.json(data);
+        // res.json(data);
+        res.json({"message": "Route subscribers hit succesfully!"});
     })
     .catch((err)=>{
         res.status(500).end();

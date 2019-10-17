@@ -12,7 +12,7 @@ module.exports = function(mongoDBConnectionString){
     return {
         connect: function(){
             return new Promise(function(resolve, reject){
-                let db = mongoose.createConnection(mongoDBConnectionString, { useNewUrlParser: true });
+                let db = mongoose.createConnection(mongoDBConnectionString, { useCreateIndex: true, useNewUrlParser: true });
                 
                 db.on('error', (err)=>{
                     reject(err);
@@ -25,15 +25,16 @@ module.exports = function(mongoDBConnectionString){
             });
         },
         getAllSubscribers: function(){
+            console.log("connections string: " + mongoDBConnectionString)
             console.log("getAllSubscribers has been hit");
             return new Promise(function(resolve,reject){
 
                 Subscriber.find()
                 //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
                 .exec()
-                .then((subscribers) => {
-                    console.log(subscribers);
-                    resolve(subscribers);
+                .then((subscriber) => {
+                    console.log("in get all subs:" + subscriber);
+                    resolve(subscriber);
                 })
                 .catch((err)=>{
                     reject(err);

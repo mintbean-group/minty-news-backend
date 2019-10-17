@@ -22,7 +22,7 @@ app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(cors());
 
-// "Employee" Routes
+// "Subscriber" Routes
 
 app.get("/subscribers", (req,res) => {
     data.getAllSubscribers().then((data)=>{
@@ -35,8 +35,8 @@ app.get("/subscribers", (req,res) => {
 
 
 
-app.get("/subsriber/:subsriberId", (req,res) => {
-    data.getSubscriberById(req.params.subsriberId).then((data)=>{
+app.get("/subscriber/:subscriberId", (req,res) => {
+    data.getSubscriberById(req.params.subscriberId).then((data)=>{
         if(data.length > 0){
             res.json(data);
         }else{
@@ -48,7 +48,7 @@ app.get("/subsriber/:subsriberId", (req,res) => {
     })
 });
 
-app.put("/subsriber/:subscriberId", (req, res) => {
+app.put("/subscriber/:subscriberId", (req, res) => {
 
     data.updateSubscriberById(req.params.subscriberId, req.body).then((data)=>{
         res.json({"message": "Subscriber " + data + " updated successfully"});

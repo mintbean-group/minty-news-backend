@@ -5,6 +5,7 @@ mongoose.Promise = global.Promise; // Added to get around the deprecation warnin
 // Load the schemas
 const subscriberSchema = require('./models/subscriber.js');
 
+
 module.exports = function(mongoDBConnectionString){
 
     let Subscriber; // defined on connection to the new db instance
@@ -12,7 +13,7 @@ module.exports = function(mongoDBConnectionString){
     return {
         connect: function(){
             return new Promise(function(resolve, reject){
-                let db = mongoose.createConnection(mongoDBConnectionString, { useCreateIndex: true, useNewUrlParser: true });
+                let db = mongoose.createConnection(mongoDBConnectionString, { useNewUrlParser: true });
                 
                 db.on('error', (err)=>{
                     reject(err);
@@ -25,16 +26,16 @@ module.exports = function(mongoDBConnectionString){
             });
         },
         getAllSubscribers: function(){
-            console.log("connections string: " + mongoDBConnectionString)
-            console.log("getAllSubscribers has been hit");
+            // console.log("connections string: " + mongoDBConnectionString)
+            // console.log("getAllSubscribers has been hit");
             return new Promise(function(resolve,reject){
 
                 Subscriber.find()
                 //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
                 .exec()
-                .then((subscriber) => {
-                    console.log("in get all subs:" + subscriber);
-                    resolve(subscriber);
+                .then((subscribers) => {
+                    console.log("in get all subs:" + subscribers);
+                    resolve(getAllSubscribers);
                 })
                 .catch((err)=>{
                     reject(err);
@@ -45,7 +46,7 @@ module.exports = function(mongoDBConnectionString){
         getSubscriberById: function(subscriberId){
             return new Promise(function(resolve,reject){
 
-                Employee.find({_id: subscriberId})
+                Subscriber.find({_id: subscriberId})
                 //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
                 .limit(1)
                 .exec()
@@ -61,7 +62,7 @@ module.exports = function(mongoDBConnectionString){
         updateSubscriberById: function (subscriberId, subscriberData) {
             return new Promise(function (resolve, reject) {
                 if (Object.keys(subscriberData).length > 0) { // if there is data to update
-                    Employee.update({ _id: subscriberId }, // replace the current subscriber with data from subscriberData
+                    Subscriber.update({ _id: subscriberId }, // replace the current subscriber with data from subscriberData
                         {
                             $set: subscriberData
                         },

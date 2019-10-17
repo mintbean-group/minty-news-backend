@@ -36,38 +36,38 @@ app.get("/subscribers", (req,res) => {
 
 
 
-app.get("/subscriber/:subscriberId", (req,res) => {
-    data.getSubscriberById(req.params.subscriberId).then((data)=>{
-        if(data.length > 0){
-            res.json(data);
-        }else{
-            res.status(404).end();
-        }
-    })
-    .catch((err)=>{
-        res.status(500).end();
-    })
-});
+// app.get("/subscriber/:subscriberId", (req,res) => {
+//     data.getSubscriberById(req.params.subscriberId).then((data)=>{
+//         if(data.length > 0){
+//             res.json(data);
+//         }else{
+//             res.status(404).end();
+//         }
+//     })
+//     .catch((err)=>{
+//         res.status(500).end();
+//     })
+// });
 
-app.put("/subscriber/:subscriberId", (req, res) => {
+// app.put("/subscriber/:subscriberId", (req, res) => {
 
-    data.updateSubscriberById(req.params.subscriberId, req.body).then((data)=>{
-        res.json({"message": "Subscriber " + data + " updated successfully"});
-    })
-    .catch((err)=>{
-        res.status(500).end();
-    })
-});
+//     data.updateSubscriberById(req.params.subscriberId, req.body).then((data)=>{
+//         res.json({"message": "Subscriber " + data + " updated successfully"});
+//     })
+//     .catch((err)=>{
+//         res.status(500).end();
+//     })
+// });
 
-app.post("/subscribers", (req, res) => {
+// app.post("/subscribers", (req, res) => {
     
-    data.addSubscriber(req.body).then((data)=>{
-        res.json({"message": "Subscriber " + data + " added successfully"});
-    })
-    .catch((err)=>{
-        res.status(500).end();
-    })
-});
+//     data.addSubscriber(req.body).then((data)=>{
+//         res.json({"message": "Subscriber " + data + " added successfully"});
+//     })
+//     .catch((err)=>{
+//         res.status(500).end();
+//     })
+// });
 
 // Catch-All 404 error
 
@@ -76,6 +76,7 @@ app.use((req, res) => {
 });
 
 // Connect to the DB and start the server
+
 
 data.connect().then(()=>{
     app.listen(HTTP_PORT, ()=>{console.log("API listening on: " + HTTP_PORT)});

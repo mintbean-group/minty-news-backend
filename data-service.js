@@ -26,16 +26,13 @@ module.exports = function(mongoDBConnectionString){
             });
         },
         getAllSubscribers: function(){
-            // console.log("connections string: " + mongoDBConnectionString)
-            // console.log("getAllSubscribers has been hit");
             return new Promise(function(resolve,reject){
-
                 Subscriber.find()
                 //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
                 .exec()
                 .then((subscribers) => {
                     console.log("in get all subs:" + subscribers);
-                    resolve(getAllSubscribers);
+                    resolve(subscribers);
                 })
                 .catch((err)=>{
                     reject(err);

@@ -38,7 +38,7 @@ module.exports = function(mongoDBConnectionString){
                     reject(err);
                 });
             })
-        }
+        },
        
         // getSubscriberById: function(subscriberId){
         //     return new Promise(function(resolve,reject){
@@ -76,21 +76,21 @@ module.exports = function(mongoDBConnectionString){
         //         }
         //     });
         // },
-        // addSubscriber: function (subscriberData) {
-        //     return new Promise(function (resolve, reject) {
+        addSubscriber: function (subscriberData) {
+            return new Promise(function (resolve, reject) {
                 
-        //         // Create a newSubsriber from the subscriberData
-        //         var newSubscriber = new Subscriber(subscriberData);
+                // Create a newSubsriber from the subscriberData
+                var newSubscriber = new Subscriber(subscriberData);
 
-        //         newSubscriber.save((err, addedSubscriber) => {
-        //             if(err) {
-        //                 reject(err);
-        //             } else {
-        //                 resolve(addedSubscriber._id);
-        //             }
-        //         });
-        //     });
-        // },      
+                newSubscriber.save((err, addedSubscriber) => {
+                    if(err) {
+                        reject(err);
+                    } else {
+                        resolve(addedSubscriber._id);
+                    }
+                });
+            });
+        },      
 
 
 

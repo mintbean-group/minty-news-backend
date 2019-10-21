@@ -59,15 +59,14 @@ app.get("/subscribers", (req,res) => {
 //     })
 // });
 
-// app.post("/subscribers", (req, res) => {
-    
-//     data.addSubscriber(req.body).then((data)=>{
-//         res.json({"message": "Subscriber " + data + " added successfully"});
-//     })
-//     .catch((err)=>{
-//         res.status(500).end();
-//     })
-// });
+app.post("/subscribers", (req, res) => {    
+    data.addSubscriber(req.body).then((data)=>{
+        res.json({"message": "Subscriber " + data + " added successfully"});
+    })
+    .catch((err)=>{
+        res.status(500).end();
+    })
+});
 
 // Catch-All 404 error
 

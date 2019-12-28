@@ -7,10 +7,7 @@ var subscriberSchema = new Schema({
     "LastName": String,
     "Company": String,
     "PhoneNum":String,
-    "Email": {
-        "type": String,
-        "unique": true,
-    },
+    "Email": String,
     "Date": Date
 });
 

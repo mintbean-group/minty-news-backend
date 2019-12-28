@@ -84,11 +84,7 @@ module.exports = function(mongoDBConnectionString){
 
                 newSubscriber.save((err, addedSubscriber) => {
                     if(err) {
-                        if (err == 11000) {
-                            resolve("Email already exists");
-                        } else if (err) {
-                            reject(err);
-                        }                   
+                        reject(err);    
                     } else {
                         resolve(addedSubscriber._id);
                     }

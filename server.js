@@ -65,12 +65,7 @@ app.post("/subscribers", (req, res) => {
         
     })
     .catch((err) => {
-        if (err == 11000) {
-            res.json({"message": "Subscriber already exists"});
-        } else if (err != 11000){
-            // res.status(500).end();
             res.json(err);
-        }        
     })
 });
 

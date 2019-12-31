@@ -88,7 +88,7 @@ module.exports = function(mongoDBConnectionString){
                         reject(`Email already exists`);
                     } else if (err) {
                         console.log(`some other error occured`)
-                        reject(`there was an error creating user: ${err}`);                           
+                        reject(`there was an error creating user`);                           
                     } else {
                         resolve(addedSubscriber._id);
                     }

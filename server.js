@@ -61,15 +61,15 @@ app.get("/subscribers", (req,res) => {
 
 app.post("/subscribers", (req, res) => {    
     data.addSubscriber(req.body).then((data)=>{
-        if (data === `Email already exists`) {
-            res.json({"message": "Subscriber already exists"});
-        } else {
-            res.json({"message": "Subscriber " + data + " added successfully"});
-        }
+       res.json({"message": "Subscriber " + data + " added successfully"});
+        
     })
     .catch((err) => {
+        if (err === 11000) {
+            res.json({"message": "Subscriber already exists"});
+        } else {
             res.status(500).end();
-        
+        }        
     })
 });
 

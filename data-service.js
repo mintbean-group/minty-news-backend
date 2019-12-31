@@ -86,7 +86,7 @@ module.exports = function(mongoDBConnectionString){
                     if (err) {
                       reject(err);                           
                     } else {
-                        resolve(addedSubscriber._id);
+                      resolve(addedSubscriber._id);
                     }
                 });
             });

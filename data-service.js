@@ -84,8 +84,8 @@ module.exports = function(mongoDBConnectionString){
 
                 newSubscriber.save((err, addedSubscriber) => {
                     if(err == 11000) {
-                        console.log(`duplicate key`);
-                        reject(`Email already exists`);
+                        // console.log(`duplicate key`);
+                        resolve(`Email already exists`);
                     } else if (err) {
                         console.log(`some other error occured`)
                         reject(`there was an error creating user`);                           

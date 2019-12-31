@@ -61,11 +61,13 @@ app.get("/subscribers", (req,res) => {
 
 app.post("/subscribers", (req, res) => {    
     data.addSubscriber(req.body).then((data)=>{
-       res.json({"message": "Subscriber " + data + " added successfully"});
+       res.json(`added`);
     })
     .catch((err) => {
         if (err.code == 11000) {
             res.json(`duplicate key`);
+        } else {
+            res.status(500).end();
         }
             
     })

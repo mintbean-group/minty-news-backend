@@ -8,7 +8,6 @@ mongoose.Promise = global.Promise; // Added to get around the deprecation warnin
 
 
 module.exports = function(mongoDBConnectionString){
-
     let Articles; // defined on connection to the new db instance
     let Comments;
     let Users;
@@ -16,10 +15,10 @@ module.exports = function(mongoDBConnectionString){
     return {
       connect: function () {
         return new Promise(function (resolve, reject) {
-          let db = mongoose.createConnection(
-            "mongodb+srv://dbUser2:minty2@cluster0-ehk9u.mongodb.net/test?retryWrites=true",
-            { useNewUrlParser: true, useUnifiedTopology: true }
-          );
+          let db = mongoose.createConnection(mongoDBConnectionString, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+          });
 
           db.on("error", (err) => {
             reject(err);

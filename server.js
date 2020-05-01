@@ -1,10 +1,4 @@
-/**
- * Set your MongoDB Connection String in a file called `.env`
- * You can copy the `sample.env` file to create this, and then
- * place your connection string in this new file.  We store secrets
- * and other environment variables outside of our code.
- */
-const mongoDBConnectionString = process.env.MONGODB_CONNECTION_STRING;
+
 const HTTP_PORT = process.env.PORT || 8099;
 const express = require("express");
 const morgan = require("morgan");
@@ -12,6 +6,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dataService = require("./data-service.js");
 
+require('dotenv').config();
+
+const mongoDBConnectionString = process.env.MONGODB_CONNECTION_STRING;
 const data = dataService(mongoDBConnectionString);
 const app = express();
 

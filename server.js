@@ -24,7 +24,7 @@ app.use(cors());
 
 // "Subscriber" Routes
 
-app.get("/article", (req,res) => {
+app.get("/articles", (req,res) => {
     data.getAllArticles().then((data)=>{
         res.json(data);
     })
@@ -56,7 +56,7 @@ app.get("/article", (req,res) => {
 //     })
 // });
 
-app.post("/articles", (req, res) => {    
+app.post("/article", (req, res) => {    
     data.addArticle(req.body).then((data)=>{
        res.json(`added`);
     })

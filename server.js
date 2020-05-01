@@ -24,7 +24,7 @@ app.use(cors());
 
 // "Subscriber" Routes
 
-app.get("/articles", (req,res) => {
+app.get("/article", (req,res) => {
     data.getAllArticles().then((data)=>{
         res.json(data);
     })

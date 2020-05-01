@@ -1,38 +1,46 @@
+// Load the schemas
 const mongoose = require('mongoose');
+const articleSchema = require("./models/article");
+const commentSchema = require("./models/comment");
+const userSchema = require("./models/user");
 
 mongoose.Promise = global.Promise; // Added to get around the deprecation warning: "Mongoose: mpromise (mongoose's default promise library) is deprecated"
-
-// Load the schemas
-const subscriberSchema = require('./models/subscriber.js');
 
 
 module.exports = function(mongoDBConnectionString){
 
-    let Subscriber; // defined on connection to the new db instance
+    let Articles; // defined on connection to the new db instance
+    let Comments;
+    let Users;
 
     return {
         connect: function(){
             return new Promise(function(resolve, reject){
-                let db = mongoose.createConnection(mongoDBConnectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+                let db = mongoose.createConnection(
+                  "mongodb+srv://dbUser2:minty2@cluster0-ehk9u.mongodb.net/test?retryWrites=true&w=majority",
+                  { useNewUrlParser: true, useUnifiedTopology: true }
+                );
                 
                 db.on('error', (err)=>{
                     reject(err);
                 });
         
                 db.once('open', ()=>{
-                    Subscriber = db.model("Subscriber", subscriberSchema);
+                    Articles = db.model("Articles", articleSchema);
+                    Comments = db.model("Comments", commentSchema);
+                    Users = db.model("Users", userSchema);
                     resolve();
                 });
             });
         },
-        getAllSubscribers: function(){
+        getAllArticles: function(){
             return new Promise(function(resolve, reject){
-                Subscriber.find()
+                Articles.find()
                 //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
                 .exec()
-                .then((subscribers) => {
-                    console.log("in get all subs:" + subscribers);
-                    resolve(subscribers);
+                .then((articles) => {
+                    console.log("in get all articles:" + articles);
+                    resolve(articles);
                 })
                 .catch((err)=>{
                     reject(err);
@@ -76,17 +84,17 @@ module.exports = function(mongoDBConnectionString){
         //         }
         //     });
         // },
-        addSubscriber: function (subscriberData) {
+        
+        addArticle: function (articleData) {
             return new Promise(function (resolve, reject) {
                 
                 // Create a newSubsriber from the subscriberData
-                var newSubscriber = new Subscriber(subscriberData);
-
-                newSubscriber.save((err, addedSubscriber) => {
+                var newArticle = new Articles(articleData);
+                newArticle.save((err, addedArticle) => {
                     if (err) {
                       reject(err);                           
                     } else {
-                      resolve(addedSubscriber._id);
+                      resolve(addedArticle._id);
                     }
                 });
             });

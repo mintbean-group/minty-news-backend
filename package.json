@@ -1,7 +1,7 @@
 {
   "name": "profile-api",
   "version": "1.1.0",
-  "description": "Starter REST API for use in WEB422",
+  "description": "Starter REST API for use",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -24,17 +24,14 @@ app.use(cors());
 
 // "Subscriber" Routes
 
-app.get("/subscribers", (req,res) => {
-    data.getAllSubscribers().then((data)=>{
+app.get("/articles", (req,res) => {
+    data.getAllArticles().then((data)=>{
         res.json(data);
-        // res.json({"message": "Route subscribers hit succesfully!"});
     })
     .catch((err)=>{
         res.status(500).end();
     })
 });
-
-
 
 // app.get("/subscriber/:subscriberId", (req,res) => {
 //     data.getSubscriberById(req.params.subscriberId).then((data)=>{
@@ -59,8 +56,8 @@ app.get("/subscribers", (req,res) => {
 //     })
 // });
 
-app.post("/subscribers", (req, res) => {    
-    data.addSubscriber(req.body).then((data)=>{
+app.post("/articles", (req, res) => {    
+    data.addArticle(req.body).then((data)=>{
        res.json(`added`);
     })
     .catch((err) => {

@@ -17,7 +17,7 @@ module.exports = function(mongoDBConnectionString){
         connect: function(){
             return new Promise(function(resolve, reject){
                 let db = mongoose.createConnection(
-                  "mongodb+srv://dbUser2:minty2@cluster0-ehk9u.mongodb.net/test?retryWrites=true&w=majority",
+                  "mongodb+srv://dbUser2:minty2@cluster0-ehk9u.mongodb.net/test?retryWrites=true",
                   { useNewUrlParser: true, useUnifiedTopology: true }
                 );
                 
@@ -84,7 +84,7 @@ module.exports = function(mongoDBConnectionString){
         //         }
         //     });
         // },
-        
+
         addArticle: function (articleData) {
             return new Promise(function (resolve, reject) {
                 

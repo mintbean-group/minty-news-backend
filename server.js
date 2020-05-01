@@ -46,15 +46,15 @@ app.get("/articles", (req,res) => {
 //     })
 // });
 
-// app.put("/subscriber/:subscriberId", (req, res) => {
+app.put("/article/:articleId", (req, res) => {
 
-//     data.updateSubscriberById(req.params.subscriberId, req.body).then((data)=>{
-//         res.json({"message": "Subscriber " + data + " updated successfully"});
-//     })
-//     .catch((err)=>{
-//         res.status(500).end();
-//     })
-// });
+    data.updateArticleById(req.params.articleId, req.body).then((data)=>{
+        res.json({"message": "Article " + data + " updated successfully"});
+    })
+    .catch((err)=>{
+        res.status(500).end();
+    })
+});
 
 app.post("/article", (req, res) => {    
     data.addArticle(req.body).then((data)=>{

@@ -12,6 +12,7 @@ require("dotenv").config();
 const mongoDBConnectionString = process.env.MONGODB_CONNECTION_STRING;
 const data = dataService(mongoDBConnectionString);
 
+app.use(express.static('public'));
 
 // Use Standard Apache combined log output, https://www.npmjs.com/package/morgan#combined
 // :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"

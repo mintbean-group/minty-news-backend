@@ -79,7 +79,7 @@ function grabArticle(id) {
 }
 
 function postComment(comment) {
-  return fetch(`https://t3minty-api.herokuapp.com/comment`, {
+  return fetch(`/comment`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -90,7 +90,7 @@ function postComment(comment) {
 
 function updateArticle(article) {
   console.log(article);
-  fetch(`https://t3minty-api.herokuapp.com/article/${article._id}`, {
+  fetch(`/article/${article._id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -104,7 +104,7 @@ function updateArticle(article) {
 
 // Gets the data and outputs it to the `out` div
 function fetchAndPrintData() {
-  fetch("https://t3minty-api.herokuapp.com/articles")
+  fetch("/articles")
     .then((data) => data.json())
     .then((json) => {
       content = [...json];
@@ -151,7 +151,7 @@ function submitForm() {
   const likes = 0;
   const comments = [];
 
-  fetch("https://t3minty-api.herokuapp.com/article", {
+  fetch("/article", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

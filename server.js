@@ -72,7 +72,7 @@ app.post("/comment", (req, res) => {
   data
     .addComment(req.body)
     .then((data) => {
-      res.json({commentId: data});
+      res.json({"id": data});
     })
     .catch((err) => {
       if (err.code == 11000) {

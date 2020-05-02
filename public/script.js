@@ -107,7 +107,8 @@ function login() {
     mode: 'no-cors'
   })
     .then((response) => response.json())
-    .then((data) => {console.log("something")});
+    .then((data) => {console.log("something")})
+    .catch((err) =>  console.log(err));
 }
 
 // Gets the data and outputs it to the `out` div

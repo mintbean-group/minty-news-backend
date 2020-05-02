@@ -1,4 +1,3 @@
-
 const HTTP_PORT = process.env.PORT || 8099;
 const express = require("express");
 const morgan = require("morgan");
@@ -6,7 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dataService = require("./data-service.js");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const mongoDBConnectionString = process.env.MONGODB_CONNECTION_STRING;
 const data = dataService(mongoDBConnectionString);
@@ -21,13 +20,15 @@ app.use(cors());
 
 // Article Routes
 
-app.get("/articles", (req,res) => {
-    data.getAllArticles().then((data)=>{
-        res.json(data);
+app.get("/articles", (req, res) => {
+  data
+    .getAllArticles()
+    .then((data) => {
+      res.json(data);
     })
-    .catch((err)=>{
-        res.status(500).end();
-    })
+    .catch((err) => {
+      res.status(500).end();
+    });
 });
 
 // app.get("/subscriber/:subscriberId", (req,res) => {
@@ -44,26 +45,29 @@ app.get("/articles", (req,res) => {
 // });
 
 app.put("/article/:articleId", (req, res) => {
-    data.updateArticleById(req.params.articleId, req.body).then((data)=>{
-        res.json({"message": "Article " + data + " updated successfully"});
-    })
-    .catch((err)=>{
-        res.status(500).end();
-    })
-});
-
-app.post("/article", (req, res) => {    
-    data.addArticle(req.body).then((data)=>{
-       res.json(`added`);
+  data
+    .updateArticleById(req.params.articleId, req.body)
+    .then((data) => {
+      res.json({ message: "Article " + data + " updated successfully" });
     })
     .catch((err) => {
-        if (err.code == 11000) {
-            res.json(`duplicate key`);
-        } else {
-            res.status(500).end();
-        }
-            
+      res.status(500).end();
+    });
+});
+
+app.post("/article", (req, res) => {
+  data
+    .addArticle(req.body)
+    .then((id) => {
+      res.json(id);
     })
+    .catch((err) => {
+      if (err.code == 11000) {
+        res.json(`duplicate key`);
+      } else {
+        res.status(500).end();
+      }
+    });
 });
 
 // Comment Routes
@@ -71,8 +75,8 @@ app.post("/article", (req, res) => {
 app.post("/comment", (req, res) => {
   data
     .addComment(req.body)
-    .then((data) => {
-      res.json(data);
+    .then((id) => {
+      res.json(id);
     })
     .catch((err) => {
       if (err.code == 11000) {
@@ -86,17 +90,22 @@ app.post("/comment", (req, res) => {
 // Catch-All 404 error
 
 app.use((req, res) => {
-    res.status(404).end();
+  res.status(404).end();
 });
 
 // Connect to the DB and start the server
 
-
-data.connect().then(()=>{
-    app.listen(HTTP_PORT, ()=>{console.log("API listening on: " + HTTP_PORT)});
-})
-.catch((err)=>{
+data
+  .connect()
+  .then(() => {
+    app.listen(HTTP_PORT, () => {
+      console.log("API listening on: " + HTTP_PORT);
+    });
+  })
+  .catch((err) => {
     console.log("unable to start the server: ", err.message);
-    console.log("Did you remember to set your MongoDB Connection String in .env?");
+    console.log(
+      "Did you remember to set your MongoDB Connection String in .env?"
+    );
     process.exit();
-});
+  });

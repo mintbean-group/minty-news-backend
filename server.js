@@ -35,6 +35,10 @@ app.use(auth(config));
 
 app.use(express.static('public'));
 
+app.get("/login", requiresAuth(), (req, res) => {
+  res.json(JSON.stringify(req.openid.user));
+});
+
 
 
 app.get("/articles", (req, res) => {
@@ -117,6 +121,7 @@ app.post("/comment", (req, res) => {
 
 app.get("/profile", requiresAuth(), (req, res) => {
   res.json(JSON.stringify(req.openid.user));  
+
 });
 
 // Catch-All 404 error

@@ -162,5 +162,10 @@ function submitForm() {
   });
 }
 
+function login() {
+  console.log("login clicked!");
+  // fetch("/login").then((data) => data.json()).then((data)=> console.log(data));
+}
+
 // run this on load
 fetchAndPrintData();

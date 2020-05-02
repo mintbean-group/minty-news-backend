@@ -104,7 +104,8 @@ function login() {
   console.log("login clicked!");
   fetch("/login", {
     method: 'GET',
-    mode: 'no-cors'
+    mode: 'no-cors',
+    credentials: 'same-origin',
   })
     .then((response) => response.json())
     .then((data) => {console.log(data)})

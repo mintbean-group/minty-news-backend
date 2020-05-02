@@ -7,9 +7,9 @@ const userSchema = require("./models/user");
 mongoose.Promise = global.Promise; // Added to get around the deprecation warning: "Mongoose: mpromise (mongoose's default promise library) is deprecated"
 
 module.exports = function (mongoDBConnectionString) {
-  let Articles; // defined on connection to the new db instance
-  let Comments;
-  let Users;
+  let Article; // defined on connection to the new db instance
+  let Comment;
+  let User;
 
   return {
     connect: function () {
@@ -22,9 +22,9 @@ module.exports = function (mongoDBConnectionString) {
           reject(err);
         });
         db.once("open", () => {
-          Articles = db.model("Articles", articleSchema);
-          Comments = db.model("Comments", commentSchema);
-          Users = db.model("Users", userSchema);
+          Article = db.model("Article", articleSchema);
+          Comment = db.model("Comment", commentSchema);
+          User = db.model("User", userSchema);
           resolve();
         });
       });
@@ -51,7 +51,6 @@ module.exports = function (mongoDBConnectionString) {
           .exec()
           .then((articles) => {
             console.log("in get all articles:" + articles);
-            // completeArticles = articles.map(())
           })
           .catch((err) => {
             reject(err);

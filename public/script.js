@@ -100,9 +100,9 @@ function updateArticle(article) {
   });
 }
 
-function login() {
-  fetch("/login", {mode: 'no-cors'}).then((res) => console.log("nothing")).then((data)=> console.log("nothing"));
-}
+// function login() {
+//   fetch("/login", {mode: 'no-cors'}).then((res) => console.log("nothing")).then((data)=> console.log("nothing"));
+// }
 
 // Gets the data and outputs it to the `out` div
 function fetchAndPrintData() {

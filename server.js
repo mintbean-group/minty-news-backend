@@ -47,6 +47,7 @@ app.get("/articles", (req, res) => {
     });
 });
 
+
 app.get("/articles-raw", (req, res) => {
   data
     .getAllArticlesRaw()
@@ -71,7 +72,7 @@ app.get("/articles-raw", (req, res) => {
 //     })
 // });
 
-app.put("/article/:articleId", (req, res) => {
+app.put("/article/:articleId", requiresAuth(), (req, res) => {
   data
     .updateArticleById(req.params.articleId, req.body)
     .then((data) => {
@@ -82,7 +83,7 @@ app.put("/article/:articleId", (req, res) => {
     });
 });
 
-app.post("/article", (req, res) => {
+app.post("/article", requiresAuth(), (req, res) => {
   data
     .addArticle(req.body)
     .then((id) => {

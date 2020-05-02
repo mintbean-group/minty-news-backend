@@ -104,7 +104,7 @@ function login() {
   console.log("login clicked!");
   fetch("/login")
     .then((response) => response.json())
-    .then((data) => {});
+    .then((data) => {console.log("something")});
 }
 
 // Gets the data and outputs it to the `out` div

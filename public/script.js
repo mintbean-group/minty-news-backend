@@ -107,7 +107,7 @@ function login() {
     mode: 'no-cors'
   })
     .then((response) => response.json())
-    .then((data) => {console.log("something")})
+    .then((data) => {console.log(data)})
     .catch((err) =>  console.log(err));
 }
 

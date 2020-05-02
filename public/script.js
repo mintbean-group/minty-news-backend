@@ -100,6 +100,13 @@ function updateArticle(article) {
   });
 }
 
+function login() {
+  console.log("login clicked!");
+  fetch("/display")
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+}
+
 // Gets the data and outputs it to the `out` div
 function fetchAndPrintData() {
   fetch("/articles")
@@ -119,8 +126,13 @@ function fetchAndPrintData() {
           }
         });
         container.appendChild(table);
-      } else { console.log("content is empty"); }
-    }).catch(() =>  { console.log("server error")});
+      } else {
+        console.log("content is empty");
+      }
+    })
+    .catch(() => {
+      console.log("server error");
+    });
 }
 
 function getCommentRow(comments) {
@@ -158,10 +170,7 @@ function submitForm() {
   });
 }
 
-function login() {
-  console.log("login clicked!");
-  fetch("/login").then((response) => response.json()).then((data)=> console.log("user Profile data:", data));
-}
+
 
 // run this on load
 fetchAndPrintData();

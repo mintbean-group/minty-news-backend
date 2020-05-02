@@ -29,20 +29,20 @@ module.exports = function (mongoDBConnectionString) {
         });
       });
     },
-    getAllArticlesRaw: function () {
-      return new Promise(function (resolve, reject) {
-        Article.find()
-          //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
-          .exec()
-          .then((articles) => {
-            console.log("in get all articles:" + articles);
-            resolve(articles);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      });
-    },
+    // getAllArticlesRaw: function () {
+    //   return new Promise(function (resolve, reject) {
+    //     Article.find()
+    //       //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
+    //       .exec()
+    //       .then((articles) => {
+    //         console.log("in get all articles:" + articles);
+    //         resolve(articles);
+    //       })
+    //       .catch((err) => {
+    //         reject(err);
+    //       });
+    //   });
+    // },
     getAllArticles: function () {
       return new Promise(function (resolve, reject) {
         Article.find()
@@ -51,6 +51,7 @@ module.exports = function (mongoDBConnectionString) {
           .exec()
           .then((articles) => {
             console.log("in get all articles:" + articles);
+            resolve(articles);
           })
           .catch((err) => {
             reject(err);

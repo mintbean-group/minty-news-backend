@@ -1,23 +1,23 @@
 const HTTP_PORT = process.env.PORT || 8099;
 const express = require("express");
+const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+app.use(cors());
 const dataService = require("./data-service.js");
 
 require("dotenv").config();
 
 const mongoDBConnectionString = process.env.MONGODB_CONNECTION_STRING;
 const data = dataService(mongoDBConnectionString);
-const app = express();
+
 
 // Use Standard Apache combined log output, https://www.npmjs.com/package/morgan#combined
 // :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
 app.use(morgan("combined"));
 
 app.use(bodyParser.json());
-app.use(cors());
-
 // Article Routes
 
 app.get("/articles", (req, res) => {

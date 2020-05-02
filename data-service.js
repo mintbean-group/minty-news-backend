@@ -104,6 +104,7 @@ module.exports = function (mongoDBConnectionString) {
           if (err) {
             reject(err);
           } else {
+            console.log(addedComment);
             resolve(addedComment._id);
           }
         });

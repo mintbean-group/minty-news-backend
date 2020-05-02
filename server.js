@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/articles", (req, res) => {
+app.get("/articles", requiresAuth(), (req, res) => {
   data
     .getAllArticles()
     .then((data) => {

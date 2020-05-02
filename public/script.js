@@ -160,7 +160,7 @@ function submitForm() {
 
 function login() {
   console.log("login clicked!");
-  fetch("/login").then((data) => data.json()).then((data)=> console.log("user Profile data:", data));
+  fetch("/login").then((response) => response.json()).then((data)=> console.log("user Profile data:", data));
 }
 
 // run this on load

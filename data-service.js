@@ -31,7 +31,7 @@ module.exports = function (mongoDBConnectionString) {
     },
     getAllArticlesRaw: function () {
       return new Promise(function (resolve, reject) {
-        Articles.find()
+        Article.find()
           //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
           .exec()
           .then((articles) => {
@@ -45,7 +45,7 @@ module.exports = function (mongoDBConnectionString) {
     },
     getAllArticles: function () {
       return new Promise(function (resolve, reject) {
-        Articles.find()
+        Article.find()
           //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
           .populate("Comment")
           .exec()
@@ -78,7 +78,7 @@ module.exports = function (mongoDBConnectionString) {
       return new Promise(function (resolve, reject) {
         if (Object.keys(article).length > 0) {
           // if there is data to update
-          Articles.update(
+          Article.update(
             { _id: articleId }, // replace the current article with data from articleData
             {
               $set: article,

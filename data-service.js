@@ -100,7 +100,8 @@ module.exports = function (mongoDBConnectionString) {
     addArticle: function (articleData) {
       return new Promise(function (resolve, reject) {
         // Create a newArticle from the articleData
-        var newArticle = new Articles(articleData);
+        const newArticle = new Article(articleData);
+        //
         newArticle.save((err, addedArticle) => {
           if (err) {
             reject(err);
@@ -113,7 +114,7 @@ module.exports = function (mongoDBConnectionString) {
     addComment: function (commentData) {
       return new Promise(function (resolve, reject) {
         // Create a newComment from the commentData
-        var newComment = new Comments(commentData);
+        const newComment = new Comment(commentData);
         newComment.save((err, addedComment) => {
           if (err) {
             reject(err);

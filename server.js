@@ -7,6 +7,7 @@ const cors = require("cors");
 app.use(cors());
 const dataService = require("./data-service.js");
 const {auth} = require("express-openid-connect");
+const {requiresAuth} = require("express-openid-connect");
 
 require("dotenv").config();
 
@@ -112,6 +113,10 @@ app.post("/comment", (req, res) => {
         res.status(500).end();
       }
     });
+});
+
+app.get("/profile", requiresAuth(), (req, res) => {
+  res.json(JSON.stringify(req.openid.user));  
 });
 
 // Catch-All 404 error

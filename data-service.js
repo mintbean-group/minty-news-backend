@@ -47,7 +47,7 @@ module.exports = function (mongoDBConnectionString) {
       return new Promise(function (resolve, reject) {
         Article.find()
           //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
-          .populate("Comment")
+          .populate("Comments")
           .exec()
           .then((articles) => {
             console.log("in get all articles:" + articles);

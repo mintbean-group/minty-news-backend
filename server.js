@@ -36,7 +36,7 @@ app.use(auth(config));
 app.use(express.static('public'));
 
 app.get("/login", requiresAuth(), (req, res) => {
-  res.json(req.openid.user);
+  res.json(JSON.stringify(req.openid.user));
 });
 
 

@@ -102,7 +102,10 @@ function updateArticle(article) {
 
 function login() {
   console.log("login clicked!");
-  fetch("/login")
+  fetch("/login", {
+    method: 'GET',
+    mode: 'no-cors'
+  })
     .then((response) => response.json())
     .then((data) => {console.log("something")});
 }

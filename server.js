@@ -35,6 +35,10 @@ app.use(auth(config));
 
 app.use(express.static('public'));
 
+app.get("/", (req, res) => {
+  res.send(req.isAuthenticated() ? "Logged in" : "Logged out");
+});
+
 
 app.get("/articles", (req, res) => {
   data

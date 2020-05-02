@@ -76,7 +76,7 @@ app.post("/comment", (req, res) => {
   data
     .addComment(req.body)
     .then((id) => {
-      res.json(id);
+      res.json({id: id});
     })
     .catch((err) => {
       if (err.code == 11000) {

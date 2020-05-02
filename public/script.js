@@ -102,7 +102,7 @@ function updateArticle(article) {
 
 function login() {
   console.log("login clicked!");
-  fetch("/display")
+  fetch("/login")
     .then((response) => response.json())
     .then((data) => console.log(data));
 }

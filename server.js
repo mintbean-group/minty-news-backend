@@ -1,4 +1,4 @@
-const HTTP_PORT = process.env.PORT || 8099;
+const HTTP_PORT = process.env.PORT || 8000;
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
@@ -23,6 +23,17 @@ app.use(bodyParser.json());
 app.get("/articles", (req, res) => {
   data
     .getAllArticles()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).end();
+    });
+});
+
+app.get("/articles-raw", (req, res) => {
+  data
+    .getAllArticlesRaw()
     .then((data) => {
       res.json(data);
     })
@@ -109,3 +120,8 @@ data
     );
     process.exit();
   });
+
+  function ensureLogin (req, res, next) {
+      
+
+  }

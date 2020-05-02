@@ -6,13 +6,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 app.use(cors());
 const dataService = require("./data-service.js");
+const {auth} = require("express-openid-connect");
 
 require("dotenv").config();
 
 const mongoDBConnectionString = process.env.MONGODB_CONNECTION_STRING;
 const data = dataService(mongoDBConnectionString);
-
-app.use(express.static('public'));
 
 // Use Standard Apache combined log output, https://www.npmjs.com/package/morgan#combined
 // :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
@@ -20,6 +19,22 @@ app.use(morgan("combined"));
 
 app.use(bodyParser.json());
 // Article Routes
+
+const config = {
+  required: false,
+  auth0Logout: true,
+  appSession: {
+    secret: process.env.SECRET,
+  },
+  baseURL: "https://t4minty.herokuapp.com",
+  clientID: "hBXHUy3VuP7zj0cRtKK1lB8YvwNRr9xR",
+  issuerBaseURL: "https://dev-rk3u8fpc.auth0.com",
+};
+app.use(auth(config));
+
+app.use(express.static('public'));
+
+
 
 app.get("/articles", (req, res) => {
   data

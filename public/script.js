@@ -101,7 +101,7 @@ function updateArticle(article) {
 }
 
 function login() {
-  fetch("/login", {mode: 'no-cors'}).then((res) => res.json()).then((data)=> console.log(data));
+  fetch("/login", {mode: 'no-cors'}).then((res) => console.log("nothing")).then((data)=> console.log("nothing"));
 }
 
 // Gets the data and outputs it to the `out` div

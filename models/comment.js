@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema({
   comment: String,
   user: { type:Schema.Types.ObjectId, ref: 'User'},
-  date: String,
+  date: Date,
 });
 
 // make this schema available to the Node application

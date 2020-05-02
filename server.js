@@ -67,6 +67,23 @@ app.post("/article", (req, res) => {
     })
 });
 
+
+
+app.post("/comment", (req, res) => {
+  data
+    .addComment(req.body)
+    .then((data) => {
+      res.json(`added`);
+    })
+    .catch((err) => {
+      if (err.code == 11000) {
+        res.json(`duplicate key`);
+      } else {
+        res.status(500).end();
+      }
+    });
+});
+
 // Catch-All 404 error
 
 app.use((req, res) => {

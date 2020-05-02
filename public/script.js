@@ -101,15 +101,7 @@ function updateArticle(article) {
 }
 
 function login() {
-  console.log("login clicked!");
-  fetch("/login", {
-    method: "GET",
-    mode: "no-cors",
-    credentials: "same-origin",
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch(() => console.log("server error"));
+  fetch("/login").then((res) => res.json()).then((data)=> console.log(data));
 }
 
 // Gets the data and outputs it to the `out` div

@@ -142,7 +142,4 @@ data
     process.exit();
   });
 
-  function ensureLogin (req, res, next) {
-      
 
-  }

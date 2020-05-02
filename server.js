@@ -30,7 +30,7 @@ const config = {
   baseURL: "https://t4minty.herokuapp.com",
   clientID: "hBXHUy3VuP7zj0cRtKK1lB8YvwNRr9xR",
   issuerBaseURL: "https://dev-rk3u8fpc.auth0.com",
-  allowedAudiences: "https://t4minty.herokuapp.com",
+  // allowedAudiences: "https://t4minty.herokuapp.com",
 };
 app.use(auth(config));
 

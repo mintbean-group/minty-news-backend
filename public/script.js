@@ -103,13 +103,13 @@ function updateArticle(article) {
 function login() {
   console.log("login clicked!");
   fetch("/login", {
-    method: 'GET',
-    mode: 'no-cors',
-    credentials: 'same-origin',
+    method: "GET",
+    mode: "no-cors",
+    credentials: "same-origin",
   })
     .then((response) => response.json())
-    .then((data) => {console.log(data)})
-    .catch((err) =>  console.log(err));
+    .then((data) => console.log(data))
+    .catch(() => console.log("server error"));
 }
 
 // Gets the data and outputs it to the `out` div
@@ -174,8 +174,6 @@ function submitForm() {
     fetchAndPrintData();
   });
 }
-
-
 
 // run this on load
 fetchAndPrintData();

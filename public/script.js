@@ -66,7 +66,6 @@ async function completeComment(newComment, id) {
     .then((response) => response.json())
     .then((data) => {
       comment.id = data.id;
-      console.log(comment);
     });
   console.log("comment added");
   article = grabArticle(id);
@@ -89,7 +88,6 @@ function postComment(comment) {
 }
 
 function updateArticle(article) {
-  console.log(article);
   fetch(`/article/${article._id}`, {
     method: "PUT",
     headers: {
@@ -108,7 +106,6 @@ function fetchAndPrintData() {
     .then((data) => data.json())
     .then((json) => {
       content = [...json];
-      console.log(content);
       if (content.length > 0) {
         let container = document.getElementById("out");
         container.innerHTML = "";
@@ -117,7 +114,6 @@ function fetchAndPrintData() {
           let row = getRow(info);
           table.appendChild(row);
           if (info.comments && info.comments.length > 0) {
-            console.log();
             let commentRow = getCommentRow(info.comments);
             table.appendChild(commentRow);
           }
@@ -164,7 +160,7 @@ function submitForm() {
 
 function login() {
   console.log("login clicked!");
-  // fetch("/login").then((data) => data.json()).then((data)=> console.log(data));
+  fetch("/login").then((data) => data.json()).then((data)=> console.log("user Profile data:", data));
 }
 
 // run this on load

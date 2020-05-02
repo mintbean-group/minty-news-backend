@@ -19,7 +19,7 @@ app.use(morgan("combined"));
 app.use(bodyParser.json());
 app.use(cors());
 
-// "Subscriber" Routes
+// Article Routes
 
 app.get("/articles", (req,res) => {
     data.getAllArticles().then((data)=>{
@@ -44,7 +44,6 @@ app.get("/articles", (req,res) => {
 // });
 
 app.put("/article/:articleId", (req, res) => {
-
     data.updateArticleById(req.params.articleId, req.body).then((data)=>{
         res.json({"message": "Article " + data + " updated successfully"});
     })
@@ -67,13 +66,13 @@ app.post("/article", (req, res) => {
     })
 });
 
-
+// Comment Routes
 
 app.post("/comment", (req, res) => {
   data
     .addComment(req.body)
     .then((data) => {
-      res.json(`added`);
+      res.json({commentId: data});
     })
     .catch((err) => {
       if (err.code == 11000) {

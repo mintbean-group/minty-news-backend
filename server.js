@@ -36,7 +36,7 @@ app.use(auth(config));
 app.use(express.static('public'));
 
 
-app.get("/articles", (req, res) => {
+app.get("/articles", requiresAuth(), (req, res) => {
   data
     .getAllArticles()
     .then((data) => {
@@ -83,6 +83,7 @@ app.put("/article/:articleId", requiresAuth(), (req, res) => {
     });
 });
 
+// add brand new article to database
 app.post("/article", requiresAuth(), (req, res) => {
   data
     .addArticle(req.body)

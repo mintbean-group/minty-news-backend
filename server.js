@@ -30,13 +30,14 @@ const config = {
   baseURL: "https://t4minty.herokuapp.com",
   clientID: "hBXHUy3VuP7zj0cRtKK1lB8YvwNRr9xR",
   issuerBaseURL: "https://dev-rk3u8fpc.auth0.com",
+  allowedAudiences: "https://t4minty.herokuapp.com",
 };
 app.use(auth(config));
 
 app.use(express.static('public'));
 
 
-app.get("/articles", requiresAuth(), (req, res) => {
+app.get("/articles", (req, res) => {
   data
     .getAllArticles()
     .then((data) => {

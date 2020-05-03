@@ -38,7 +38,7 @@ app.use(express.static("public"));
 app.get("/check", (req, res) => {
   const status = {};
   status.status = req.isAuthenticated();
-  if (req.isAuthenticated) {
+  if (req.isAuthenticated()) {
     data
       .addUser(req.openid.user)
       .then(() => {

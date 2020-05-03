@@ -32,7 +32,6 @@ module.exports = function (mongoDBConnectionString) {
     getAllArticlesRaw: function () {
       return new Promise(function (resolve, reject) {
         Article.find()
-          //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
           .exec()
           .then((articles) => {
             console.log("in get all articles:" + articles);
@@ -46,7 +45,7 @@ module.exports = function (mongoDBConnectionString) {
     getAllArticles: function () {
       return new Promise(function (resolve, reject) {
         Article.find()
-          //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
+          .sort({likes: 'asc'}) 
           // this must match the name of the collection in the database
           .populate("comments")
           .exec()
@@ -59,22 +58,6 @@ module.exports = function (mongoDBConnectionString) {
           });
       });
     },
-
-    // getSubscriberById: function(subscriberId){
-    //     return new Promise(function(resolve,reject){
-
-    //         Subscriber.find({_id: subscriberId})
-    //         //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
-    //         .limit(1)
-    //         .exec()
-    //         .then((subscriber) => {
-    //             resolve(subscriber);
-    //         })
-    //         .catch((err)=>{
-    //             reject(err);
-    //         });
-    //     })
-    // },
 
     updateArticleById: function (articleId, article) {
       return new Promise(function (resolve, reject) {

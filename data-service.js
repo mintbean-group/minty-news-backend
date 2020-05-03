@@ -34,7 +34,6 @@ module.exports = function (mongoDBConnectionString) {
         Article.find()
           .exec()
           .then((articles) => {
-            console.log("in get all articles:" + articles);
             resolve(articles);
           })
           .catch((err) => {
@@ -50,7 +49,6 @@ module.exports = function (mongoDBConnectionString) {
           .populate("comments")
           .exec()
           .then((articles) => {
-            console.log("in get all articles:" + articles);
             resolve(articles);
           })
           .catch((err) => {
@@ -109,5 +107,13 @@ module.exports = function (mongoDBConnectionString) {
         });
       });
     },
+
+    addUser: function (userData) {
+      return new Promise (function (resolve, reject) {
+        
+
+
+      }); // end of Promise
+    } // end of addUser
   };
 };

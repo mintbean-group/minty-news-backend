@@ -40,10 +40,12 @@ app.get("/check", (req, res) => {
     ? { status: req.isAuthenticated(), user: req.openid.user }
     : { status: req.isAuthenticated()};
 
-    if (req.isAuthenticated()) {
-      console.log(req.openid.user);
+    if (req.isAuthenticated) {
+      
+    } else {
+      console.log("not logged in yet");
     }
-
+    
     res.json(status);
 });
 

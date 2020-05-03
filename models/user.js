@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 // create the subscriberSchema
 const userSchema = new Schema({
-  username: String,
-  password: String,
+  name: String,
+  picture: String,
 });
 
 // make this schema available to the Node application

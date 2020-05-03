@@ -42,6 +42,11 @@ app.get("/check", (req, res) => {
     res.json(status);
 });
 
+app.get("/logout", (req, res) =>  {
+  // kill the session
+  res.openid.logout({});
+})
+
 app.get("/articles", (req, res) => {
   data
     .getAllArticles()

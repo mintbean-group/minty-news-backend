@@ -36,23 +36,29 @@ app.use(auth(config));
 app.use(express.static("public"));
 
 app.get("/check", (req, res) => {
-  const status = req.isAuthenticated
-    ? { status: req.isAuthenticated(), user: req.openid.user }
-    : { status: req.isAuthenticated()};
-
-    if (req.isAuthenticated) {
-      
-    } else {
-      console.log("not logged in yet");
-    }
-    
+  const status = {};
+  status.status = req.isAuthenticated();
+  if (req.isAuthenticated) {
+    data
+      .addUser(req.openid.user)
+      .then(() => {
+        status.created = true;
+        status.user = req.openid.user;
+        res.json(status);
+      })
+      .catch(() => {
+        status.created = false;
+        res.json(status);
+      });
+  } else {
     res.json(status);
+  }
 });
 
-app.get("/logout", (req, res) =>  {
+app.get("/logout", (req, res) => {
   // kill the session
   res.openid.logout({});
-})
+});
 
 app.get("/articles", (req, res) => {
   data

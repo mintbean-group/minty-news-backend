@@ -107,12 +107,14 @@ module.exports = function (mongoDBConnectionString) {
         });
       });
     },
-
     addUser: function (userData) {
       return new Promise (function (resolve, reject) {
-        
-
-
+        const variable = true;
+        if(variable) {
+          resolve();
+        } else {
+          reject();
+        }
       }); // end of Promise
     } // end of addUser
   };

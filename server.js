@@ -36,7 +36,7 @@ app.use(auth(config));
 app.use(express.static('public'));
 
 
-app.get("/articles", requiresAuth(), (req, res) => {
+app.get("/articles", (req, res) => {
   data
     .getAllArticles()
     .then((data) => {
@@ -93,7 +93,7 @@ app.post("/article", requiresAuth(), (req, res) => {
     .catch((err) => {
       if (err.code == 11000) {
         res.json(`duplicate key`);
-      } else {
+       } else {
         res.status(500).end();
       }
     });

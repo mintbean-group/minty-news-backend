@@ -117,7 +117,7 @@ app.post("/comment", (req, res) => {
 });
 
 app.get("/display", requiresAuth(), (req, res) => {
-  res.json(JSON.stringify(req.openid.user));  
+  res.json(req.openid.user);  
 });
 
 // Catch-All 404 error

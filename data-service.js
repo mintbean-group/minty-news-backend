@@ -45,7 +45,7 @@ module.exports = function (mongoDBConnectionString) {
     getAllArticles: function () {
       return new Promise(function (resolve, reject) {
         Article.find()
-          .sort({likes: 'asc'}) 
+          .sort({likes: 'desc'}) 
           // this must match the name of the collection in the database
           .populate("comments")
           .exec()

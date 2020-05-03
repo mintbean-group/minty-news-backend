@@ -39,6 +39,11 @@ app.get("/check", (req, res) => {
   const status = req.isAuthenticated
     ? { status: req.isAuthenticated(), user: req.openid.user }
     : { status: req.isAuthenticated()};
+
+    if (req.isAuthenticated()) {
+      console.log(req.openid.user);
+    }
+
     res.json(status);
 });
 

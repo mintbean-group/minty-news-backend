@@ -6,8 +6,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 app.use(cors());
 const dataService = require("./data-service.js");
-const {auth} = require("express-openid-connect");
-const {requiresAuth} = require("express-openid-connect");
+const { auth } = require("express-openid-connect");
+const { requiresAuth } = require("express-openid-connect");
 
 require("dotenv").config();
 
@@ -33,15 +33,14 @@ const config = {
 };
 app.use(auth(config));
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  const status = {
-    isAuthenticated: req.isAuthenticated(),
-  }
-  res.json(status);  
-})
-
+app.get("/check", (req, res) => {
+  const status = req.isAuthenticated
+    ? { status: req.isAuthenticated(), user: req.openid.user }
+    : { status: req.isAuthenticated()};
+    res.json(status);
+});
 
 app.get("/articles", (req, res) => {
   data
@@ -54,7 +53,6 @@ app.get("/articles", (req, res) => {
     });
 });
 
-
 app.get("/articles-raw", (req, res) => {
   data
     .getAllArticlesRaw()
@@ -65,8 +63,6 @@ app.get("/articles-raw", (req, res) => {
       res.status(500).end();
     });
 });
-
-
 
 app.put("/article/:articleId", requiresAuth(), (req, res) => {
   data
@@ -89,7 +85,7 @@ app.post("/article", requiresAuth(), (req, res) => {
     .catch((err) => {
       if (err.code == 11000) {
         res.json(`duplicate key`);
-       } else {
+      } else {
         res.status(500).end();
       }
     });
@@ -101,7 +97,7 @@ app.post("/comment", (req, res) => {
   data
     .addComment(req.body)
     .then((id) => {
-      res.json({id: id});
+      res.json({ id: id });
     })
     .catch((err) => {
       if (err.code == 11000) {
@@ -113,7 +109,7 @@ app.post("/comment", (req, res) => {
 });
 
 app.get("/display", requiresAuth(), (req, res) => {
-  res.json(req.openid.user);  
+  res.json(req.openid.user);
 });
 
 // Catch-All 404 error
@@ -138,5 +134,3 @@ data
     );
     process.exit();
   });
-
-

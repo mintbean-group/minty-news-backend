@@ -35,6 +35,13 @@ app.use(auth(config));
 
 app.use(express.static('public'));
 
+app.get("/", (req, res) => {
+  const status = {
+    isAuthenticated: req.isAuthenticated(),
+  }
+  res.json(status);  
+})
+
 
 app.get("/articles", (req, res) => {
   data
@@ -59,18 +66,7 @@ app.get("/articles-raw", (req, res) => {
     });
 });
 
-// app.get("/subscriber/:subscriberId", (req,res) => {
-//     data.getSubscriberById(req.params.subscriberId).then((data)=>{
-//         if(data.length > 0){
-//             res.json(data);
-//         }else{
-//             res.status(404).end();
-//         }
-//     })
-//     .catch((err)=>{
-//         res.status(500).end();
-//     })
-// });
+
 
 app.put("/article/:articleId", requiresAuth(), (req, res) => {
   data

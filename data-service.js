@@ -44,7 +44,7 @@ module.exports = function (mongoDBConnectionString) {
     getAllArticles: function () {
       return new Promise(function (resolve, reject) {
         Article.find()
-          .sort({likes: 'desc'}) 
+          .sort({ likes: "desc" })
           // this must match the name of the collection in the database
           .populate("comments")
           .exec()
@@ -108,24 +108,15 @@ module.exports = function (mongoDBConnectionString) {
       });
     },
     addUser: function (userData) {
-      return new Promise (function (resolve, reject) {
-        let user = {
-          name: userData.nickname,
-          email: userData.email,
-          picture: userData.picture,
-        } 
-        const newUser = new User(user);
-        newUser.save((err, addedUser) =>  {
-          if (err === 11000) {
-            
-          }
-        })
-        
-
-
-        
-      
-      }); // end of Promise
-    } // end of addUser
+      let user = {
+        name: userData.nickname,
+        email: userData.email,
+        picture: userData.picture,
+      };
+      const newUser = new User(user);
+      newUser.save((err, addedUser) => {
+    
+      });
+    }, // end of addUser
   };
 };

@@ -41,17 +41,9 @@ app.get("/check", (req, res) => {
     : { status: false };
 
   if (req.isAuthenticated()) {
-    data
-      .addUser(req.openid.user)
-      .then(() => {
-        res.json(status);
-      })
-      .catch(() => {
-        res.json(status);        
-      });
-  } else {
-    res.json(status);
-  }
+    data.addUser(req.openid.user);     
+  } 
+  res.json(status);
 });
 
 app.get("/logout", (req, res) => {

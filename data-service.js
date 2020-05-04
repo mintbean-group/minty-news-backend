@@ -48,7 +48,7 @@ module.exports = function (mongoDBConnectionString) {
           // this must match the name of the collection in the database
           .populate("comments")
           .populate({
-            path: "comment",
+            path: "comments",
             populate: {
               path: "user",
               model: "user",

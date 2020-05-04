@@ -63,7 +63,6 @@ module.exports = function (mongoDBConnectionString) {
           });
       });
     },
-
     updateArticleById: function (articleId, article) {
       return new Promise(function (resolve, reject) {
         if (Object.keys(article).length > 0) {
@@ -104,8 +103,7 @@ module.exports = function (mongoDBConnectionString) {
 
     addComment: function (commentData) {
       return new Promise(function (resolve, reject) {
-        User.find({ email: email })
-          .limit(1)
+        User.findOne({ email: commentData.tempUser })
           .exec()
           .then((user) => {
             commentData.user = user._id;
@@ -121,7 +119,6 @@ module.exports = function (mongoDBConnectionString) {
           .catch((err) => {});
       });
     },
-
     addUser: function (userData) {
       let user = {
         name: userData.nickname,

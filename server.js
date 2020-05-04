@@ -1,4 +1,5 @@
 const HTTP_PORT = process.env.PORT || 8000;
+const mongoDBConnectionString = process.env.MONGODB_CONNECTION_STRING;
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
@@ -11,7 +12,6 @@ const { requiresAuth } = require("express-openid-connect");
 
 require("dotenv").config();
 
-const mongoDBConnectionString = process.env.MONGODB_CONNECTION_STRING;
 const data = dataService(mongoDBConnectionString);
 
 // Use Standard Apache combined log output, https://www.npmjs.com/package/morgan#combined

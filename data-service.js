@@ -50,7 +50,7 @@ module.exports = function (mongoDBConnectionString) {
           .populate({
             path: "comments",
             populate: {
-              path: "User",
+              path: "user",
               model: "User",
             },
           })

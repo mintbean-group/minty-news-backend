@@ -1,4 +1,4 @@
-## Minty News
+## MINTY NEWS
 
 ![GitHub Logo](https://github.com/mintbean-group/Merge/blob/master/images/mintyFresh.PNG)
 
@@ -9,17 +9,17 @@
 <h2> Mintbean:  https://www.mintbean.io/ </h2>
 <h2> YouTube:  https://www.youtube.com/channel/UCg8dJs-WeArbtwjp1kpFaXw/ </h2>
 
-<h3> Contributors </h3>
+## Contributors 
 
-<h4> Front End Team </h4>
-<h5> Key Evans-Stocks - https://www.kaystocks.com/ </h5>
-<h5> Jim Wang - https://kneestoosharp.com/ </h5>
+<h3> Front End Team </h3>
+<h4> Key Evans-Stocks - https://www.kaystocks.com/ </h4>
+<h4> Jim Wang - https://kneestoosharp.com/ </h4>
 
-<h4> Back End Team </h4>
-<h5> Ania Pienio - https://aniapienio.com/ </h5>
+<h3> Back End Team </h3>
+<h4> Ania Pienio - https://aniapienio.com/ </h4>
 
 
-<h3>Contribute to This Project</h3>
+<h3>Your Turn: Contribute to This Project</h3>
 
 <h4>Quick Note: Before you Start</h4>
 
@@ -52,7 +52,7 @@ The calls to the backend portion are made via axios.
 
 ## BACK END 
 
-The back end portion was created with Express on Node.js. The persistence storage is facilitated by MongoDB and accessed through the Mongoose ORM.  Authorization for the application's front end is done through a thrid-party provider, Auth0.
+The back end portion was created with Express on Node.js. The persistence storage is facilitated by MongoDB and accessed through the Mongoose ORM.  Authorization for the application's front end is done through a thrid-party openId provider, Auth0.
 
 ## FUNCTIONALITY
 
@@ -79,10 +79,9 @@ The back end portion was created with Express on Node.js. The persistence storag
 * ability to log out 
 
 
-
 ## REST API AVAILABLE
 The is a stand alone API that serves the collections on Minty Fresh should you wish to build your own front-end application:
-Deployed at: https://t3minty-api.herokuapp.com/  and accepts all requests via for example fetch or axios.  Contact one of the team for the endpoint documentation. 
+Deployed at: https://t3minty-api.herokuapp.com/  and accepts all requests via for example fetch or axios.  Contact one of the team for the endpoint documentation by emailing one of us: mintyfreshdevs@gmail.com
 
 
 

@@ -46,6 +46,7 @@ module.exports = function (mongoDBConnectionString) {
         Article.find()
           .sort({ likes: "desc" })
           // this must match the name of the collection in the database
+          
           .populate("comments")
           .exec()
           .then((articles) => {
@@ -114,9 +115,9 @@ module.exports = function (mongoDBConnectionString) {
         picture: userData.picture,
       };
       const newUser = new User(user);
-      newUser.save((err, addedUser) => {
-    
-      });
+      newUser.save((err, addedUser) => {});
     }, // end of addUser
+
+    
   };
 };

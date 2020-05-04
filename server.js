@@ -41,7 +41,7 @@ app.get("/check", (req, res) => {
     : { status: false };
 
   if (req.isAuthenticated()) {
-    data.addUser(req.openid.user);     
+    data.addUser(req.openid.user);
   } 
   res.json(status);
 });

@@ -1,7 +1,7 @@
 ## Minty Fresh
 
 ![GitHub Logo](https://github.com/mintbean-group/Merge/blob/master/images/mintyFresh.PNG)
-Format: ![Alt Text](url)
+Format: ![PNG](url)
 
 <h2> Deployed at:  https://t4minty.herokuapp.com/ </h2>
 

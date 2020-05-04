@@ -109,12 +109,22 @@ module.exports = function (mongoDBConnectionString) {
     },
     addUser: function (userData) {
       return new Promise (function (resolve, reject) {
-        const variable = true;
-        if(variable) {
-          resolve();
-        } else {
-          reject();
-        }
+        let user = {
+          name: userData.nickname,
+          email: userData.email,
+          picture: userData.picture,
+        } 
+        const newUser = new User(user);
+        newUser.save((err, addedUser) =>  {
+          if (err === 11000) {
+            
+          }
+        })
+        
+
+
+        
+      
       }); // end of Promise
     } // end of addUser
   };

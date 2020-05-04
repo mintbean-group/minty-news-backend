@@ -42,7 +42,8 @@ The back end portion was created with Express on Node.js. The persistence storag
 
 ## FUNCTIONALITY
 
-<h4>General Experience: </h4> 
+#### General Experience: 
+
 * ability to view articles
 * ability to visit article links
 * ability to view the amount of likes for each article 
@@ -50,7 +51,8 @@ The back end portion was created with Express on Node.js. The persistence storag
 * ability to register via an openId provider (Google) or user specified credentials
 
 
-<h4> Authenticated Experiece </h4>
+#### Authenticated Experiece 
+
 * ability to view articles
 * ability to visit article links
 * ability to view the amount of like for each article

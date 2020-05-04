@@ -51,8 +51,8 @@ module.exports = function (mongoDBConnectionString) {
             path: "comment",
             populate: {
               path: "user",
-              model: "user"
-            }
+              model: "user",
+            },
           })
           .exec()
           .then((articles) => {
@@ -102,38 +102,25 @@ module.exports = function (mongoDBConnectionString) {
       });
     },
 
-    getUserIdByEmail: async function(email) {
-      let userId;
-      await User.find({email: email})
-        .limit(1)
-        .exec()
-        .then((user) => {
-          userId = user._id;
-        }).catch((err) => {
-                   
-        });   
-        return userId
-     },   
-    
-    addComment: async function (commentData) {
-      const user = await getUserIdByEmail(commentData.email);
-      let newCommentData = {
-        comment: commentData.comment,
-        user: user,
-      }
+    addComment: function (commentData) {
       return new Promise(function (resolve, reject) {
-        // Create a newComment from the commentData
-        const newComment = new Comment(newCommentData);
-        newComment.save((err, addedComment) => {
-          if (err) {
-            reject(err);
-          } else {
-           resolve(addedComment._id);
-          }
-        });
+        User.find({ email: email })
+          .limit(1)
+          .exec()
+          .then((user) => {
+            commentData.user = user._id;
+            const newComment = new Comment(commentData);
+            newComment.save((err, addedComment) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(addedComment._id);
+              }
+            });
+          })
+          .catch((err) => {});
       });
     },
-
 
     addUser: function (userData) {
       let user = {
@@ -144,7 +131,5 @@ module.exports = function (mongoDBConnectionString) {
       const newUser = new User(user);
       newUser.save((err, addedUser) => {});
     }, // end of addUser
-
-    
   };
 };

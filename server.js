@@ -36,23 +36,26 @@ app.use(auth(config));
 app.use(express.static("public"));
 
 app.get("/check", (req, res) => {
-  const status = {};
-  status.status = req.isAuthenticated();
-  if (req.isAuthenticated()) {
-    data
-      .addUser(req.openid.user)
-      .then(() => {
-        status.created = true;
-        status.user = req.openid.user;
-        res.json(status);
-      })
-      .catch(() => {
-        status.created = false;
-        res.json(status);
-      });
-  } else {
-    res.json(status);
-  }
+  const status = req.isAuthorized()
+    ? { status: true, user: req.openid.user }
+    : { status: false };
+  // const status = {};
+  // status.status = req.isAuthenticated();
+  // if (req.isAuthenticated()) {
+  //   data
+  //     .addUser(req.openid.user)
+  //     .then(() => {
+  //       status.created = true;
+  //       status.user = req.openid.user;
+  //       res.json(status);
+  //     })
+  //     .catch(() => {
+  //       status.created = false;
+  //       res.json(status);
+  //     });
+  // } else {
+  // }
+  res.json(status);
 });
 
 app.get("/logout", (req, res) => {

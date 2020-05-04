@@ -39,23 +39,19 @@ app.get("/check", (req, res) => {
   const status = req.isAuthenticated()
     ? { status: true, user: req.openid.user }
     : { status: false };
-  // const status = {};
-  // status.status = req.isAuthenticated();
-  // if (req.isAuthenticated()) {
-  //   data
-  //     .addUser(req.openid.user)
-  //     .then(() => {
-  //       status.created = true;
-  //       status.user = req.openid.user;
-  //       res.json(status);
-  //     })
-  //     .catch(() => {
-  //       status.created = false;
-  //       res.json(status);
-  //     });
-  // } else {
-  // }
-  res.json(status);
+
+  if (req.isAuthenticated()) {
+    data
+      .addUser(req.openid.user)
+      .then(() => {
+        res.json(status);
+      })
+      .catch(() => {
+        res.json(status);        
+      });
+  } else {
+    res.json(status);
+  }
 });
 
 app.get("/logout", (req, res) => {

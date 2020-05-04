@@ -36,7 +36,7 @@ app.use(auth(config));
 app.use(express.static("public"));
 
 app.get("/check", (req, res) => {
-  const status = req.isAuthorized()
+  const status = req.isAuthenticated()
     ? { status: true, user: req.openid.user }
     : { status: false };
   // const status = {};

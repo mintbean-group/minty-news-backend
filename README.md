@@ -29,9 +29,7 @@ Once you have cloned the repository, open it in Visual Studio Code and issue the
 
 If you open the "server.js" file, you will notice that the top 2 lines define the constants "mongoDBConnectionString" and "HTTP_PORT".  The HTTP_PORT is fine the way it is (unless you have a conflict on your local machine with this port), however the mongoDBConnectionString value will need to change. 
 
-Once you aquire the connection string, set it as a secret variable in a .env file that you will create yourself.
-
-The components used required Material UI's main packages, which are:
+Once you aquire the connection string, set it as a secret variable in a .env file that you will create yourself and be engaged with dotenv: 
 
     require("dotenv").config();
 

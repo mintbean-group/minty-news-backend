@@ -1,4 +1,4 @@
-## Minty Fresh
+## Minty News
 
 ![GitHub Logo](https://github.com/mintbean-group/Merge/blob/master/images/mintyFresh.PNG)
 
@@ -40,7 +40,9 @@ The calls to the backend portion are made via axios.
 
 The back end portion was created with Express on Node.js. The persistence storage is facilitated by MongoDB and accessed through the Mongoose ORM.  Authorization for the application's front end is done through a thrid-party provider, Auth0.
 
+## FUNCTIONALITY
 
+An unauthorized user
 
 ## REST API AVAILABLE
 The is a stand alone API that serves the collections on Minty Fresh should you wish to build your own front-end application:

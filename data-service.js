@@ -116,9 +116,10 @@ module.exports = function (mongoDBConnectionString) {
      },   
     
     addComment: async function (commentData) {
+      const user = await getUserIdByEmail(commentData.email);
       let newCommentData = {
         comment: commentData.comment,
-        user: await this.getUserIdByEmail(commentData.email),
+        user: user,
       }
       return new Promise(function (resolve, reject) {
         // Create a newComment from the commentData
@@ -127,7 +128,7 @@ module.exports = function (mongoDBConnectionString) {
           if (err) {
             reject(err);
           } else {
-            resolve(addedComment._id);
+           resolve(addedComment._id);
           }
         });
       });

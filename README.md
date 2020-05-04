@@ -78,7 +78,7 @@ The back end portion was created with Express on Node.js. The persistence storag
 
 
 ## REST API AVAILABLE
-The is a stand alone API that serves the collections on Minty Fresh should you wish to build your own front-end application:
+There is a stand alone API that serves the collections on Minty Fresh should you wish to build your own front-end application:
 Deployed at: https://t3minty-api.herokuapp.com/  and accepts all requests via for example fetch or axios.  Contact one of the team for the endpoint documentation by emailing one of us: mintyfreshdevs@gmail.com
 
 

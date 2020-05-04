@@ -3,7 +3,21 @@
 ![GitHub Logo](https://github.com/mintbean-group/Merge/blob/master/images/mintyFresh.PNG)
 
 
-<h2> Deployed at:  https://t4minty.herokuapp.com/ </h2>
+<h2> Minty News is Deployed at:  https://t4minty.herokuapp.com/ </h2>
+<h2> Front End Repo:  https://github.com/mintbean-group/minty-news-frontend </h2>
+<h2> Back End Repo:  https://github.com/mintbean-group/minty-news-backend </h2>
+<h2> Mintbean:  https://www.mintbean.io/ </h2>
+<h2> YouTube:  https://www.youtube.com/channel/UCg8dJs-WeArbtwjp1kpFaXw/ </h2>
+
+<h3> Contributors </h3>
+
+<h4> Front End Team </h4>
+<h5> Key Evans-Stocks - https://www.kaystocks.com/ </h5>
+<h5> Jim Wang - https://kneestoosharp.com/ </h5>
+
+<h4> Back End Team </h4>
+<h5> Ania Pienio - https://aniapienio.com/ </h5>
+
 
 <h3>Contribute to This Project</h3>
 

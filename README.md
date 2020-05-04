@@ -3,6 +3,7 @@
 ![GitHub Logo](https://github.com/mintbean-group/Merge/blob/master/images/mintyFresh.PNG)
 Format: ![Alt Text](url)
 
+<h2> Deployed at:  https://t4minty.herokuapp.com/ </h2>
 
 <h3>Contribute to This Project</h3>
 
@@ -12,11 +13,33 @@ Format: ![Alt Text](url)
 
 Once you have cloned the repository, open it in Visual Studio Code and issue the command "npm install" from the integrated terminal.  This will look at the package.json file and add the required dependant modules.
 
-If you open the "server.js" file, you will notice that the top 2 lines define the constants "mongoDBConnectionString" and "HTTP_PORT".  The HTTP_PORT is fine the way it is (unless you have a conflict on your local machine with this port), however the mongoDBConnectionString value will need to change.
+If you open the "server.js" file, you will notice that the top 2 lines define the constants "mongoDBConnectionString" and "HTTP_PORT".  The HTTP_PORT is fine the way it is (unless you have a conflict on your local machine with this port), however the mongoDBConnectionString value will need to change. 
+
+Once you aquire the connection string, set it as a secret variable in a .env file that you will create yourself.
+
+The components used required Material UI's main packages, which are:
+
+    require("dotenv").config();
+
+The string will load to replace your mongoDBConnectionString as soon as the process enviornment is accessed. 
+
+   MONGODB_CONNECTION_STRING="your string from mongoDB"
+
+ Don't forget to put the .env file in your .gitignore otherwise it will be publicly visible, and also to configure an enviornment variable at your server's host. 
+
 
 ## FRONT END
 
-The front end portion was created in React.
+The front end portion was created in React on Node.js using npx create-react-app.  Using build scripts, the frontend portion was compressed and then moved into the public folder of the application.  The back end portion serves the front by exposing the public folder as the root route as follows: 
+
+    app.use(express.static("public"));
+
+The calls to the backend portion are made via axios. 
+
+## BACK END 
+
+The back end portion was created with Express on Node.js. The persistence storage is facilitated by MongoDB and accessed through the Mongoose ORM.  Authorization for the application's front end is done through a thrid-party provider, Auth0.
+
 
 
 ## REST API AVAILABLE
